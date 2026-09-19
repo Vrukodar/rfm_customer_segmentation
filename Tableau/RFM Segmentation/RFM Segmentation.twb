@@ -1,0 +1,1315 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20262.26.0818.1324                               -->
+<workbook _.fcp.WorkbookFingerprinting.true...author-id='638298e443200f1d6a606eaf5a856fe3decaefdc797f173eb3fb577ba277a067' _.fcp.WorkbookFingerprinting.true...creator-author-id='638298e443200f1d6a606eaf5a856fe3decaefdc797f173eb3fb577ba277a067' _.fcp.WorkbookFingerprinting.true...creator-license-type='public' _.fcp.WorkbookFingerprinting.true...creator-site-id='7f90dcb704d9c6abac6b86a7ba5bdf80fe013d75c3f00417a534550a1d2efbb8' _.fcp.WorkbookFingerprinting.true...license-type='public' _.fcp.WorkbookFingerprinting.true...site-id='7f90dcb704d9c6abac6b86a7ba5bdf80fe013d75c3f00417a534550a1d2efbb8' locale='en_US' original-version='18.1' source-build='2026.2.6 (20262.26.0818.1324)' version='18.1' xml:base='http://localhost:9100' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <IntuitiveSorting />
+    <IntuitiveSorting_SP2 />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+    <_.fcp.WorkbookFingerprinting.true...WorkbookFingerprinting />
+    <ZoneBackgroundTransparency />
+  </document-format-change-manifest>
+  <repository-location derived-from='http://localhost:9100/workbooks/RFMSegmentation_17895798909580?rev=1.2' id='RFMSegmentation_17895798909580' path='/workbooks' revision='1.3' />
+  <preferences />
+  <datasources>
+    <datasource caption='rfm_final' inline='true' name='federated.0pjbrla0jam8nu17q2gv40xmetnr' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='rfm_final' name='textscan.05120071f1nvzf19m8y3s14o77jc'>
+            <connection class='textscan' directory='Data/1wgx5ox042d9i41b6sax80471lb0' filename='rfm_final.csv' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.05120071f1nvzf19m8y3s14o77jc' name='rfm_final.csv' table='[rfm_final#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+            <column datatype='string' name='customer_unique_id' ordinal='0' />
+            <column datatype='integer' name='recency' ordinal='1' />
+            <column datatype='integer' name='frequency' ordinal='2' />
+            <column datatype='real' name='monetary' ordinal='3' />
+            <column datatype='integer' name='R_score' ordinal='4' />
+            <column datatype='integer' name='F_score' ordinal='5' />
+            <column datatype='integer' name='M_score' ordinal='6' />
+            <column datatype='integer' name='RFM_score' ordinal='7' />
+            <column datatype='string' name='segment' ordinal='8' />
+          </columns>
+        </relation>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Valuable segment Revenue %' datatype='real' default-format='p0.0%' name='[Calculation_0014821471006850]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM(&#10;IF [segment] = &quot;Champions&quot; &#10;OR [segment] = &quot;Loyal Customers&quot;&#10;THEN [monetary]&#10;END&#10;) / SUM([monetary])' />
+      </column>
+      <column caption='Valueable Customers %' datatype='real' default-format='p0.0%' name='[Calculation_0014821474201732]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNTD(&#10;IF [segment] = &quot;Champions&quot; &#10;OR [segment] = &quot;Loyal Customers&quot;&#10;THEN [customer_unique_id] &#10;END&#10;)&#10;/ &#10;COUNTD([customer_unique_id])' />
+      </column>
+      <column caption='Total Customers' datatype='integer' name='[Calculation_0014958895390849]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='COUNTD([customer_unique_id])' />
+      </column>
+      <column caption='Total Revenue' datatype='real' name='[Calculation_0014958896332931]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='SUM([monetary])' />
+      </column>
+      <column caption='F score' datatype='integer' name='[F_score]' role='measure' type='quantitative' />
+      <column caption='M score' datatype='integer' name='[M_score]' role='measure' type='quantitative' />
+      <column caption='RFM score' datatype='integer' name='[RFM_score]' role='measure' type='quantitative' />
+      <column caption='R score' datatype='integer' name='[R_score]' role='measure' type='quantitative' />
+      <column caption='rfm_final.csv' datatype='table' name='[__tableau_internal_object_id__].[rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C]' role='measure' type='quantitative' />
+      <column caption='Customer Unique Id' datatype='string' name='[customer_unique_id]' role='dimension' type='nominal' />
+      <column caption='Frequency' datatype='integer' name='[frequency]' role='measure' type='quantitative' />
+      <column caption='Monetary' datatype='real' name='[monetary]' role='measure' type='quantitative' />
+      <column caption='Recency' datatype='integer' name='[recency]' role='measure' type='quantitative' />
+      <column caption='Segment' datatype='string' name='[segment]' role='dimension' type='nominal' />
+      <column-instance column='[segment]' derivation='None' name='[none:segment:nk]' pivot='key' type='nominal' />
+      <group caption='Action (Segment)' hidden='true' name='[Action (Segment)]' name-style='unqualified' user:auto-column='sheet_link'>
+        <groupfilter function='crossjoin'>
+          <groupfilter function='level-members' level='[segment]' />
+        </groupfilter>
+      </group>
+      <extract count='-1' enabled='true' object-id='rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C' units='records' user-specific='false'>
+        <connection authentication='auth-none' author-locale='en_US' class='hyper' dbname='Data/Extracts/federated_0pjbrla0jam8nu17q2gv40.hyper' default-settings='yes' schema='Extract' tablename='Extract' update-time='09/16/2026 05:04:50 PM'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <refresh>
+            <refresh-event add-from-file-path='rfm_final' increment-value='%null%' refresh-type='create' rows-inserted='93357' timestamp-start='2026-09-16 17:04:50.106' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>customer_unique_id</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[customer_unique_id]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>customer_unique_id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>rfm_final.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>93357</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>recency</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[recency]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>recency</remote-alias>
+              <ordinal>1</ordinal>
+              <family>rfm_final.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1935</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>frequency</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[frequency]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>frequency</remote-alias>
+              <ordinal>2</ordinal>
+              <family>rfm_final.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>monetary</remote-name>
+              <remote-type>5</remote-type>
+              <local-name>[monetary]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>monetary</remote-alias>
+              <ordinal>3</ordinal>
+              <family>rfm_final.csv</family>
+              <local-type>real</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>19544</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>R_score</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[R_score]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>R_score</remote-alias>
+              <ordinal>4</ordinal>
+              <family>rfm_final.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F_score</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[F_score]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>F_score</remote-alias>
+              <ordinal>5</ordinal>
+              <family>rfm_final.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>M_score</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[M_score]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>M_score</remote-alias>
+              <ordinal>6</ordinal>
+              <family>rfm_final.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>RFM_score</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[RFM_score]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>RFM_score</remote-alias>
+              <ordinal>7</ordinal>
+              <family>rfm_final.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>107</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>segment</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[segment]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>segment</remote-alias>
+              <ordinal>8</ordinal>
+              <family>rfm_final.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>6</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LEN_RUS' />
+              <object-id>[rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[none:segment:nk]' type='palette'>
+            <map to='#4e79a7'>
+              <bucket>&quot;At Risk&quot;</bucket>
+            </map>
+            <map to='#59a14f'>
+              <bucket>&quot;Need Attention&quot;</bucket>
+            </map>
+            <map to='#76b7b2'>
+              <bucket>&quot;Loyal Customers&quot;</bucket>
+            </map>
+            <map to='#e15759'>
+              <bucket>&quot;Lost&quot;</bucket>
+            </map>
+            <map to='#edc948'>
+              <bucket>&quot;New Customers&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;Champions&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;United States&quot;' />
+      </semantic-values>
+      <object-graph>
+        <objects>
+          <object caption='rfm_final.csv' id='rfm_final.csv_F987C169B5E1442DB9640C90E7CFD08C'>
+            <properties context=''>
+              <relation connection='textscan.05120071f1nvzf19m8y3s14o77jc' name='rfm_final.csv' table='[rfm_final#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='en_US' separator=','>
+                  <column datatype='string' name='customer_unique_id' ordinal='0' />
+                  <column datatype='integer' name='recency' ordinal='1' />
+                  <column datatype='integer' name='frequency' ordinal='2' />
+                  <column datatype='real' name='monetary' ordinal='3' />
+                  <column datatype='integer' name='R_score' ordinal='4' />
+                  <column datatype='integer' name='F_score' ordinal='5' />
+                  <column datatype='integer' name='M_score' ordinal='6' />
+                  <column datatype='integer' name='RFM_score' ordinal='7' />
+                  <column datatype='string' name='segment' ordinal='8' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <shared-views>
+    <shared-view name='federated.0pjbrla0jam8nu17q2gv40xmetnr'>
+      <datasources>
+        <datasource caption='rfm_final' name='federated.0pjbrla0jam8nu17q2gv40xmetnr' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0pjbrla0jam8nu17q2gv40xmetnr'>
+        <column-instance column='[segment]' derivation='None' name='[none:segment:nk]' pivot='key' type='nominal' />
+        <column caption='Segment' datatype='string' name='[segment]' role='dimension' type='nominal' />
+      </datasource-dependencies>
+      <filter class='categorical' column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]'>
+        <groupfilter function='level-members' level='[none:segment:nk]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+      </filter>
+    </shared-view>
+  </shared-views>
+  <actions>
+    <action caption='Filter 1 (generated)' name='[Action1_69B1EC3E287C433C83D2ECC803D9EE3C]'>
+      <activation auto-clear='true' type='on-select' />
+      <source dashboard='Customer Segmentation' type='sheet' worksheet='Revenue by Segment' />
+      <command command='tsc:tsl-filter'>
+        <param name='special-fields' value='all' />
+        <param name='target' value='Customer Segmentation' />
+      </command>
+    </action>
+  </actions>
+  <worksheets>
+    <worksheet name='Recency vs Monetary'>
+      <repository-location derived-from='http://localhost:9100/workbooks/RFMSegmentation_17895798909580/RecencyvsMonetary?rev=' id='RecencyvsMonetary' path='/workbooks/RFMSegmentation_17895798909580' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='rfm_final' name='federated.0pjbrla0jam8nu17q2gv40xmetnr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0pjbrla0jam8nu17q2gv40xmetnr'>
+            <column-instance column='[monetary]' derivation='Avg' name='[avg:monetary:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[recency]' derivation='Avg' name='[avg:recency:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[customer_unique_id]' derivation='CountD' name='[ctd:customer_unique_id:qk]' pivot='key' type='quantitative' />
+            <column caption='Customer Unique Id' datatype='string' name='[customer_unique_id]' role='dimension' type='nominal' />
+            <column caption='Monetary' datatype='real' name='[monetary]' role='measure' type='quantitative' />
+            <column-instance column='[segment]' derivation='None' name='[none:segment:nk]' pivot='key' type='nominal' />
+            <column caption='Recency' datatype='integer' name='[recency]' role='measure' type='quantitative' />
+            <column caption='Segment' datatype='string' name='[segment]' role='dimension' type='nominal' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]'>
+            <groupfilter function='level-members' level='[segment]' user:ui-action-filter='[Action1_69B1EC3E287C433C83D2ECC803D9EE3C]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</column>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='legend-title-text'>
+            <format attr='size' field='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[ctd:customer_unique_id:qk]' value='Customer Count'>
+              <formatted-text>
+                <run>Customer Count</run>
+              </formatted-text>
+            </format>
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Circle' />
+            <encodings>
+              <color column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' />
+              <size column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[ctd:customer_unique_id:qk]' />
+              <text column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='2' />
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:monetary:qk]</rows>
+        <cols>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:recency:qk]</cols>
+      </table>
+      <simple-id uuid='{DAA9A36F-73C8-4A06-89E8-3C7BBEAE6A78}' />
+    </worksheet>
+    <worksheet name='Revenue by Segment'>
+      <repository-location derived-from='http://localhost:9100/workbooks/RFMSegmentation_17895798909580/RevenuebySegment?rev=' id='RevenuebySegment' path='/workbooks/RFMSegmentation_17895798909580' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='rfm_final' name='federated.0pjbrla0jam8nu17q2gv40xmetnr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0pjbrla0jam8nu17q2gv40xmetnr'>
+            <column caption='Total Revenue' datatype='real' name='[Calculation_0014958896332931]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([monetary])' />
+            </column>
+            <column caption='Monetary' datatype='real' name='[monetary]' role='measure' type='quantitative' />
+            <column-instance column='[segment]' derivation='None' name='[none:segment:nk]' pivot='key' type='nominal' />
+            <column caption='Segment' datatype='string' name='[segment]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_0014958896332931]' derivation='User' name='[usr:Calculation_0014958896332931:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958896332931:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958896332931:qk]' value='C1046%' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958896332931:qk]' value='C1046%' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' />
+              <text column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958896332931:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</rows>
+        <cols>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958896332931:qk]</cols>
+      </table>
+      <simple-id uuid='{089ACB26-40C0-4968-AF8A-31A331848351}' />
+    </worksheet>
+    <worksheet name='Segment Size'>
+      <repository-location derived-from='http://localhost:9100/workbooks/RFMSegmentation_17895798909580/SegmentSize?rev=' id='SegmentSize' path='/workbooks/RFMSegmentation_17895798909580' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='rfm_final' name='federated.0pjbrla0jam8nu17q2gv40xmetnr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0pjbrla0jam8nu17q2gv40xmetnr'>
+            <column caption='Total Customers' datatype='integer' name='[Calculation_0014958895390849]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD([customer_unique_id])' />
+            </column>
+            <column caption='Customer Unique Id' datatype='string' name='[customer_unique_id]' role='dimension' type='nominal' />
+            <column-instance column='[segment]' derivation='None' name='[none:segment:nk]' pivot='key' type='nominal' />
+            <column caption='Segment' datatype='string' name='[segment]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_0014958895390849]' derivation='User' name='[usr:Calculation_0014958895390849:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]'>
+            <groupfilter function='level-members' level='[segment]' user:ui-action-filter='[Action1_69B1EC3E287C433C83D2ECC803D9EE3C]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <shelf-sorts>
+            <shelf-sort-v2 dimension-to-sort='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' direction='DESC' is-on-innermost-dimension='true' measure-to-sort-by='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958895390849:qk]' shelf='rows' />
+          </shelf-sorts>
+          <slices>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</column>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <encodings>
+              <color column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' />
+              <text column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958895390849:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</rows>
+        <cols>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958895390849:qk]</cols>
+      </table>
+      <simple-id uuid='{4AE0AA47-4622-4FFA-BD02-90F72A4A37C2}' />
+    </worksheet>
+    <worksheet name='Segment profile'>
+      <repository-location derived-from='http://localhost:9100/workbooks/RFMSegmentation_17895798909580/Segmentprofile?rev=' id='Segmentprofile' path='/workbooks/RFMSegmentation_17895798909580' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='rfm_final' name='federated.0pjbrla0jam8nu17q2gv40xmetnr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0pjbrla0jam8nu17q2gv40xmetnr'>
+            <column-instance column='[frequency]' derivation='Avg' name='[avg:frequency:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[monetary]' derivation='Avg' name='[avg:monetary:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[recency]' derivation='Avg' name='[avg:recency:qk]' pivot='key' type='quantitative' />
+            <column caption='Frequency' datatype='integer' name='[frequency]' role='measure' type='quantitative' />
+            <column caption='Monetary' datatype='real' name='[monetary]' role='measure' type='quantitative' />
+            <column-instance column='[segment]' derivation='None' name='[none:segment:nk]' pivot='key' type='nominal' />
+            <column caption='Recency' datatype='integer' name='[recency]' role='measure' type='quantitative' />
+            <column caption='Segment' datatype='string' name='[segment]' role='dimension' type='nominal' />
+            <column-instance column='[frequency]' derivation='Sum' name='[sum:frequency:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[monetary]' derivation='Sum' name='[sum:monetary:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[recency]' derivation='Sum' name='[sum:recency:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[:Measure Names]'>
+            <groupfilter function='union' user:op='manual'>
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0pjbrla0jam8nu17q2gv40xmetnr].[sum:frequency:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0pjbrla0jam8nu17q2gv40xmetnr].[sum:monetary:qk]&quot;' />
+              <groupfilter function='member' level='[:Measure Names]' member='&quot;[federated.0pjbrla0jam8nu17q2gv40xmetnr].[sum:recency:qk]&quot;' />
+            </groupfilter>
+          </filter>
+          <filter class='categorical' column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]'>
+            <groupfilter function='level-members' level='[segment]' user:ui-action-filter='[Action1_69B1EC3E287C433C83D2ECC803D9EE3C]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[:Measure Names]</column>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</column>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:monetary:qk]' value='C1046%' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:monetary:qk]' value='C1046%' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' />
+            </encodings>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:recency:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' />
+              <text column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:recency:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:frequency:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' />
+              <text column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:frequency:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='3' selection-relaxation-option='selection-relaxation-allow' x-axis-name='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:monetary:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' />
+              <text column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:monetary:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</rows>
+        <cols>([federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:recency:qk] + ([federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:frequency:qk] + [federated.0pjbrla0jam8nu17q2gv40xmetnr].[avg:monetary:qk]))</cols>
+      </table>
+      <simple-id uuid='{A81868CE-3CD9-4E34-B180-CE2E5FBB7676}' />
+    </worksheet>
+    <worksheet name='Total Customers'>
+      <repository-location derived-from='http://localhost:9100/workbooks/RFMSegmentation_17895798909580/TotalCustomers?rev=' id='TotalCustomers' path='/workbooks/RFMSegmentation_17895798909580' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='rfm_final' name='federated.0pjbrla0jam8nu17q2gv40xmetnr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0pjbrla0jam8nu17q2gv40xmetnr'>
+            <column caption='Total Customers' datatype='integer' name='[Calculation_0014958895390849]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD([customer_unique_id])' />
+            </column>
+            <column caption='Customer Unique Id' datatype='string' name='[customer_unique_id]' role='dimension' type='nominal' />
+            <column-instance column='[segment]' derivation='None' name='[none:segment:nk]' pivot='key' type='nominal' />
+            <column caption='Segment' datatype='string' name='[segment]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_0014958895390849]' derivation='User' name='[usr:Calculation_0014958895390849:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[:Measure Names]'>
+            <groupfilter function='level-members' level='[:Measure Names]' />
+          </filter>
+          <filter class='categorical' column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]'>
+            <groupfilter function='level-members' level='[segment]' user:ui-action-filter='[Action1_69B1EC3E287C433C83D2ECC803D9EE3C]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[:Measure Names]</column>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</column>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958895390849:qk]' value='n#,##0;-#,##0' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958895390849:qk]' value='n#,##0;-#,##0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Text' />
+            <encodings>
+              <text column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958895390849:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run fontalignment='1' fontsize='16'><![CDATA[<[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958895390849:qk]>]]></run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{51CED189-D2DC-4490-A150-BFA9149A2285}' />
+    </worksheet>
+    <worksheet name='Total Revenue'>
+      <repository-location derived-from='http://localhost:9100/workbooks/RFMSegmentation_17895798909580/TotalRevenue?rev=' id='TotalRevenue' path='/workbooks/RFMSegmentation_17895798909580' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='rfm_final' name='federated.0pjbrla0jam8nu17q2gv40xmetnr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0pjbrla0jam8nu17q2gv40xmetnr'>
+            <column caption='Total Revenue' datatype='real' name='[Calculation_0014958896332931]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM([monetary])' />
+            </column>
+            <column caption='Monetary' datatype='real' name='[monetary]' role='measure' type='quantitative' />
+            <column-instance column='[segment]' derivation='None' name='[none:segment:nk]' pivot='key' type='nominal' />
+            <column caption='Segment' datatype='string' name='[segment]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_0014958896332931]' derivation='User' name='[usr:Calculation_0014958896332931:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]'>
+            <groupfilter function='level-members' level='[segment]' user:ui-action-filter='[Action1_69B1EC3E287C433C83D2ECC803D9EE3C]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</column>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='cell'>
+            <format attr='text-format' field='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958896332931:qk]' value='C1046%' />
+          </style-rule>
+          <style-rule element='label'>
+            <format attr='text-format' field='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958896332931:qk]' value='C1046%' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Text' />
+            <encodings>
+              <text column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958896332931:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run fontalignment='1' fontsize='16'><![CDATA[<[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958896332931:qk]>]]></run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{DED85B77-C501-4F2F-94B4-0CF75F60053A}' />
+    </worksheet>
+    <worksheet name='Value Concentration'>
+      <repository-location derived-from='http://localhost:9100/workbooks/RFMSegmentation_17895798909580/ValueConcentration?rev=' id='ValueConcentration' path='/workbooks/RFMSegmentation_17895798909580' revision='' />
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='rfm_final' name='federated.0pjbrla0jam8nu17q2gv40xmetnr' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0pjbrla0jam8nu17q2gv40xmetnr'>
+            <column caption='Valuable segment Revenue %' datatype='real' default-format='p0.0%' name='[Calculation_0014821471006850]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='SUM(&#10;IF [segment] = &quot;Champions&quot; &#10;OR [segment] = &quot;Loyal Customers&quot;&#10;THEN [monetary]&#10;END&#10;) / SUM([monetary])' />
+            </column>
+            <column caption='Valueable Customers %' datatype='real' default-format='p0.0%' name='[Calculation_0014821474201732]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='COUNTD(&#10;IF [segment] = &quot;Champions&quot; &#10;OR [segment] = &quot;Loyal Customers&quot;&#10;THEN [customer_unique_id] &#10;END&#10;)&#10;/ &#10;COUNTD([customer_unique_id])' />
+            </column>
+            <column caption='Customer Unique Id' datatype='string' name='[customer_unique_id]' role='dimension' type='nominal' />
+            <column caption='Monetary' datatype='real' name='[monetary]' role='measure' type='quantitative' />
+            <column-instance column='[segment]' derivation='None' name='[none:segment:nk]' pivot='key' type='nominal' />
+            <column caption='Segment' datatype='string' name='[segment]' role='dimension' type='nominal' />
+            <column-instance column='[Calculation_0014821471006850]' derivation='User' name='[usr:Calculation_0014821471006850:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_0014821474201732]' derivation='User' name='[usr:Calculation_0014821474201732:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='categorical' column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]'>
+            <groupfilter function='level-members' level='[segment]' user:ui-action-filter='[Action1_69B1EC3E287C433C83D2ECC803D9EE3C]' user:ui-enumeration='all' user:ui-marker='enumerate' />
+          </filter>
+          <slices>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</column>
+            <column>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[Action (Segment)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Text' />
+            <encodings>
+              <text column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014821471006850:qk]' />
+              <text column='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014821474201732:qk]' />
+            </encodings>
+            <customized-label>
+              <formatted-text>
+                <run fontalignment='0' fontsize='16'>Customer base                       </run>
+                <run fontalignment='0' fontsize='16'><![CDATA[<[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014821474201732:qk]>]]></run>
+                <run fontalignment='0'>Æ&#10;</run>
+                <run fontalignment='0' fontsize='16'>Revenue Contribution       </run>
+                <run fontalignment='0' fontsize='16'><![CDATA[<[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014821471006850:qk]>]]></run>
+              </formatted-text>
+            </customized-label>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{4EC8F9AA-998B-4572-BCA7-7199E4105D95}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Customer Segmentation'>
+      <repository-location derived-from='http://localhost:9100/workbooks/RFMSegmentation_17895798909580/CustomerSegmentation?rev=' id='CustomerSegmentation' path='/workbooks/RFMSegmentation_17895798909580' revision='' />
+      <style />
+      <size sizing-mode='automatic' />
+      <datasources>
+        <datasource caption='rfm_final' name='federated.0pjbrla0jam8nu17q2gv40xmetnr' />
+      </datasources>
+      <datasource-dependencies datasource='federated.0pjbrla0jam8nu17q2gv40xmetnr'>
+        <column-instance column='[segment]' derivation='None' name='[none:segment:nk]' pivot='key' type='nominal' />
+        <column caption='Segment' datatype='string' name='[segment]' role='dimension' type='nominal' />
+      </datasource-dependencies>
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98018' id='21' param='horz' type-v2='layout-flow' w='98986' x='507' y='991'>
+            <zone h='98018' id='19' param='vert' type-v2='layout-flow' w='89030' x='507' y='991'>
+              <zone h='98018' id='17' type-v2='layout-basic' w='89030' x='507' y='991'>
+                <zone h='19943' id='3' param='horz' type-v2='layout-flow' w='89030' x='507' y='991'>
+                  <zone h='19943' id='7' name='Total Customers' w='29676' x='507' y='991'>
+                    <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='19943' id='8' name='Total Revenue' w='29676' x='30183' y='991'>
+                    <layout-cache cell-count-w='1' type-h='fixed' type-w='cell' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='19943' id='9' name='Value Concentration' w='29676' x='59859' y='991'>
+                    <layout-cache cell-count-w='1' type-h='fixed' type-w='cell' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+                <zone h='34449' id='5' param='horz' type-v2='layout-flow' w='89030' x='507' y='20934'>
+                  <zone h='34449' id='11' name='Segment Size' w='44515' x='507' y='20934'>
+                    <layout-cache minwidth='200' type-h='fixed' type-w='scalable' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                  <zone h='34449' id='13' name='Revenue by Segment' w='44515' x='45022' y='20934'>
+                    <layout-cache minwidth='200' type-h='fixed' type-w='scalable' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+                <zone h='36184' id='6' param='horz' type-v2='layout-flow' w='44518' x='45019' y='55383'>
+                  <zone h='36184' id='16' name='Segment profile' w='44518' x='45019' y='55383'>
+                    <layout-cache minwidth='402' type-h='cell' type-w='scalable' />
+                    <zone-style>
+                      <format attr='border-color' value='#000000' />
+                      <format attr='border-style' value='none' />
+                      <format attr='border-width' value='0' />
+                      <format attr='margin' value='4' />
+                    </zone-style>
+                  </zone>
+                </zone>
+                <zone forceUpdate='true' h='7442' id='10' type-v2='text' w='89030' x='507' y='91567'>
+                  <formatted-text>
+                    <run fontalignment='1' fontcolor='#000000' fontsize='12' italic='true'>&apos;&quot;Needs Attention&quot; is 42% of customers but 50% of revenue — a volume segment worth re-engaging</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+                <zone h='36184' id='14' name='Recency vs Monetary' w='44512' x='507' y='55383'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+            </zone>
+            <zone fixed-size='157' h='98018' id='20' is-fixed='true' param='vert' type-v2='layout-flow' w='9956' x='89537' y='991'>
+              <zone h='21437' id='22' name='Revenue by Segment' param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' type-v2='filter' values='database' w='9956' x='89537' y='991'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='18215' id='23' name='Revenue by Segment' pane-specification-id='0' param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' type-v2='color' w='9956' x='89537' y='22428'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='15737' id='24' name='Recency vs Monetary' pane-specification-id='0' param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[ctd:customer_unique_id:qk]' type-v2='size' w='9956' x='89537' y='40643'>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='1900' minheight='1900' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='30' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='98018' id='29' param='vert' type-v2='layout-flow' w='98986' x='507' y='991'>
+                <zone fixed-size='151' h='19943' id='7' is-fixed='true' name='Total Customers' w='29676' x='507' y='991'>
+                  <layout-cache cell-count-w='1' type-h='cell' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='151' h='19943' id='8' is-fixed='true' name='Total Revenue' w='29676' x='30183' y='991'>
+                  <layout-cache cell-count-w='1' type-h='fixed' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='151' h='19943' id='9' is-fixed='true' name='Value Concentration' w='29676' x='59859' y='991'>
+                  <layout-cache cell-count-w='1' type-h='fixed' type-w='cell' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='268' h='34449' id='11' is-fixed='true' name='Segment Size' w='44515' x='507' y='20934'>
+                  <layout-cache minwidth='200' type-h='fixed' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='21437' id='22' mode='checkdropdown' name='Revenue by Segment' param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' type-v2='filter' values='database' w='9956' x='89537' y='991'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='268' h='34449' id='13' is-fixed='true' name='Revenue by Segment' w='44515' x='45022' y='20934'>
+                  <layout-cache minwidth='200' type-h='fixed' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='18215' id='23' name='Revenue by Segment' pane-specification-id='0' param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' type-v2='color' w='9956' x='89537' y='22428'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='36184' id='14' is-fixed='true' name='Recency vs Monetary' w='44512' x='507' y='55383'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone h='15737' id='24' name='Recency vs Monetary' pane-specification-id='0' param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[ctd:customer_unique_id:qk]' type-v2='size' w='9956' x='89537' y='40643'>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='36184' id='16' is-fixed='true' name='Segment profile' w='44518' x='45019' y='55383'>
+                  <layout-cache minwidth='402' type-h='cell' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone forceUpdate='true' h='7442' id='10' type-v2='text' w='89030' x='507' y='91567'>
+                  <formatted-text>
+                    <run fontalignment='1' fontcolor='#000000' fontsize='12' italic='true'>&apos;&quot;Needs Attention&quot; is 42% of customers but 50% of revenue — a volume segment worth re-engaging</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{5F7B1E51-5A12-474D-9844-B26ABA38B9DC}' />
+    </dashboard>
+  </dashboards>
+  <windows>
+    <window class='worksheet' name='Total Customers'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[:Measure Names]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{B09B2711-68FA-46E2-97C6-593364BF33F5}' />
+    </window>
+    <window class='worksheet' name='Total Revenue'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+      </viewpoint>
+      <simple-id uuid='{74BA47C4-4344-4DFD-B274-F2A3FB61A2C9}' />
+    </window>
+    <window class='worksheet' name='Value Concentration'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <selection-collection>
+          <tuple-selection>
+            <tuple-reference>
+              <tuple-descriptor>
+                <pane-descriptor>
+                  <x-fields />
+                  <y-fields />
+                </pane-descriptor>
+                <columns>
+                  <field>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014821471006850:qk]</field>
+                  <field>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014821474201732:qk]</field>
+                </columns>
+              </tuple-descriptor>
+              <tuple>
+                <value>0.037421916721665206</value>
+                <value>0.01948434504107887</value>
+              </tuple>
+            </tuple-reference>
+          </tuple-selection>
+        </selection-collection>
+      </viewpoint>
+      <simple-id uuid='{5EECB3DC-0363-42C2-9203-12DBA79E7559}' />
+    </window>
+    <window class='worksheet' name='Segment Size'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{9A01CC51-1556-4AF9-9E38-FF7A269B85E4}' />
+    </window>
+    <window class='worksheet' name='Revenue by Segment'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' type='color' />
+            <card mode='checklist' param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' type='filter' values='database' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{E36B54BF-FC09-4E15-AE3B-504C90B718BE}' />
+    </window>
+    <window class='worksheet' name='Recency vs Monetary'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' type='color' />
+            <card param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[ctd:customer_unique_id:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:customer_unique_id:nk]</field>
+            <field>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{7998A2C4-3A18-495F-AE24-1A7F43C96117}' />
+    </window>
+    <window class='worksheet' name='Segment profile'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='31'>
+            <card type='columns' />
+          </strip>
+          <strip size='31'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='160'>
+            <card param='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[:Measure Names]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{36C4720E-0B29-469D-9596-136A6833DE1C}' />
+    </window>
+    <window class='dashboard' maximized='true' name='Customer Segmentation'>
+      <viewpoints>
+        <viewpoint name='Recency vs Monetary'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Revenue by Segment'>
+          <zoom type='entire-view' />
+          <selection-collection>
+            <node-selection select-tuples='false'>
+              <oriented-node-reference orientation='horizontal'>
+                <node-reference>
+                  <axis>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[usr:Calculation_0014958896332931:qk]</axis>
+                </node-reference>
+                <page-reference />
+              </oriented-node-reference>
+            </node-selection>
+          </selection-collection>
+          <highlight>
+            <color-one-way>
+              <field>[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]</field>
+            </color-one-way>
+          </highlight>
+        </viewpoint>
+        <viewpoint name='Segment Size'>
+          <zoom type='entire-view' />
+          <highlight field='[federated.0pjbrla0jam8nu17q2gv40xmetnr].[none:segment:nk]'>
+            <bucket-selection />
+          </highlight>
+        </viewpoint>
+        <viewpoint name='Segment profile'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Total Customers'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Total Revenue'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Value Concentration'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='14' />
+      <simple-id uuid='{133BFAEB-5149-4F80-A220-A13D5BE57807}' />
+    </window>
+  </windows>
+</workbook>

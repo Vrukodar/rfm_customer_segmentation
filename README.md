@@ -5,7 +5,6 @@ An end-to-end customer segmentation analysis using Recency, Frequency, and Monet
 **[View the interactive dashboard on Tableau Public →](https://public.tableau.com/shared/H6TBG7FHP)**
 
 ![Dashboard Screenshot](dashboard_screenshot.png)
-*(Add your dashboard screenshot to the repo and update this path)*
 
 ---
 
